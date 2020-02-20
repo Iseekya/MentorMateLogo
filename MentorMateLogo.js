@@ -3,6 +3,10 @@ let LogoPrinter = (function() {
     const star = "*";
     const dash = "-";
 
+    let firstNumToDecrease;
+    let secondNumToDecrease;
+    let thirdNumToIncrease;
+
     // Constructor
     function LogoPrinter() {}
 
@@ -10,21 +14,27 @@ let LogoPrinter = (function() {
         if(typeof number !== 'number') {
             console.log('Please enter numbers only!');
         } else if (number > 2 && number < 10000 && number % 2 === 1) {
-            printMMLogo(number);
+            drawMMLogo(number);
         } else {
             throw Error("Wrong Input!");
         }
     }
 
 
-    function printMMLogo(number) {
+    function drawMMLogo(number) {
 
-        let firstNumToDecrease = number;
-        let secondNumToDecrease = number;
-        let thirdNumToIncrease = number;
+        firstNumToDecrease = number;
+        secondNumToDecrease = number;
+        thirdNumToIncrease = number;
             
-             
-    //prints the lines above the middile  of M
+        printTopPart(number);
+        printBottomPart(number);
+
+    }
+
+    // prints the lines above the middile  of M
+    function printTopPart(number) {
+
         for(let i = 0; i < number / 2; i++) {
 
             line = dash.repeat(firstNumToDecrease) + 
@@ -37,9 +47,12 @@ let LogoPrinter = (function() {
             firstNumToDecrease --;
             secondNumToDecrease += 2;
             thirdNumToIncrease -= 2;
-
+        }
     }
+
     // prints the lines  below the middle of M
+    function printBottomPart(number) {
+
         for(let i = 0; i < number / 2; i++) {  
 
             secondNumToDecrease -= 2;
@@ -55,18 +68,17 @@ let LogoPrinter = (function() {
             console.log(line.repeat(2));
 
             firstNumToDecrease --; 
-
         }
- }
+    }
 
 
 
-LogoPrinter.prototype.print = function(input) {
-    return validateInput.call(this, input);
-}
-    return LogoPrinter;
+    LogoPrinter.prototype.print = function(input) {
+        return validateInput.call(this, input);
+    }
+        return LogoPrinter;
 })();
-let logoPrinter = new LogoPrinter();
+    let logoPrinter = new LogoPrinter();
     
-logoPrinter.print(3);
+    logoPrinter.print(11);
 

@@ -76,9 +76,11 @@ let LogoPrinter = (function() {
     LogoPrinter.prototype.print = function(input) {
         return validateInput.call(this, input);
     }
-        return LogoPrinter;
-})();
-    let logoPrinter = new LogoPrinter();
     
-    logoPrinter.print(11);
+    return LogoPrinter;
+})();
+
+let logoPrinter = new LogoPrinter();
+    
+logoPrinter.print(3);
 
